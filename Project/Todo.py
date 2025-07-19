@@ -34,7 +34,29 @@ def main():
         print("3. Mark a task as done")
         print("4. Quit")
         option = int(input("Choose an option from(1-4): "))
-    if option == 1:
-        show_tasks(tasks)
-    elif option == 2:
-        title = input("Enter task ")
+        if option == 1:
+            show_tasks(tasks)
+        elif option == 2:
+            title = input("Enter task title: ")
+            tasks.append({"title": title, "done": False})
+            save_tasks(tasks)
+            print("Task added")
+        elif option == 3:
+            show_tasks(tasks)
+            index = input("Enter the task number to mark as complete: ") - 1
+            if 0<= index < len(tasks):
+                tasks[index]["done"] = True
+                save_tasks(tasks)
+                print("Task marked as complete.")
+            else:
+                print("invalid task number.")
+        elif option ==4:
+            print("Goodbye")
+            break
+        else:
+            print("invalid choice. Please enter 1, 2, 3 or 4.")
+
+
+
+main()
+            
