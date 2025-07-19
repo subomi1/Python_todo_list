@@ -32,8 +32,9 @@ def main():
         print("2. Add a task")
         print("3. Mark a task as done")
         print("4. Delete  a task")
-        print("5. Quit")
-        option = int(input("Choose an option from(1-4): "))
+        print("5. Edit a task title")
+        print("6. Quit")
+        option = int(input("Choose an option from(1-6): "))
         if option == 1:
             show_tasks(tasks)
         elif option == 2:
@@ -64,6 +65,19 @@ def main():
             except ValueError:
                 print("please enter a valid number")
         elif option == 5:
+            show_tasks(tasks)
+            try:
+                index = int(input("Enter the number of the task in which the title you want to change: ")) - 1
+                if 0 <= index < len(tasks):
+                    title_change = input("Enter the name in which you want to change it to: ").strip()
+                    tasks[index]["title"] = title_change
+                    save_tasks(tasks)
+                    print(f"Task {index + 1} title updated to: {title_change}")
+                else:
+                    print("Invalid task number")
+            except ValueError:
+                print("please enter a valid number") 
+        elif option == 6:
             print("Goodbye")
             break
         else:
