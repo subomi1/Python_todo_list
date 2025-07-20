@@ -33,7 +33,8 @@ def main():
         print("3. Mark a task as done")
         print("4. Delete  a task")
         print("5. Edit a task title")
-        print("6. Quit")
+        print("6. Clear all tasks")
+        print("7. Quit")
         option = int(input("Choose an option from(1-6): "))
         if option == 1:
             show_tasks(tasks)
@@ -76,8 +77,19 @@ def main():
                 else:
                     print("Invalid task number")
             except ValueError:
-                print("please enter a valid number") 
+                print("please enter a valid number")
         elif option == 6:
+            show_tasks(tasks)
+            answer1 = input("Are you sure you want to clear all tasks (Y)es or (N)o: ").lower()
+            if answer1 == "y":
+                tasks.clear()
+                save_tasks(tasks)
+                print("All tasks cleared")
+            elif answer1 == "n":
+                print("No tasks were cleared")
+            else:
+                print("Invalid input")
+        elif option == 7:
             print("Goodbye")
             break
         else:
